@@ -14,9 +14,9 @@
 	<StackPanel>
 
         <StackPanel Orientation="Horizontal">
-            <Button Style="{DynamicResource MahApps.Styles.Button.Square}" Margin="5" DockPanel.Dock="Left" x:Name="StepOne" Click="ExecuteChecksumRepair_OnClick" Content="Step One"/>
-            <Button Style="{DynamicResource MahApps.Styles.Button.Square}" Margin="5" DockPanel.Dock="Right" x:Name="StepTwo" Click="ExecuteStructRepair_OnClick" Content="Step Two"/>
-			<TextBlock Margin="40 0 0 0" MinWidth="400" Text="{Binding State}" TextAlignment="Right" VerticalAlignment="Center"  Foreground="Red" FontSize="14"/>
+			<Button Style="{DynamicResource MahApps.Styles.Button.Square}" Margin="5" IsEnabled="{Binding StepOneState}" x:Name="StepOne" Click="ExecuteChecksumRepair_OnClick" Content="Step One"/>
+			<Button Style="{DynamicResource MahApps.Styles.Button.Square}" Margin="5" IsEnabled="{Binding StepTwoState}"  x:Name="StepTwo" Click="ExecuteStructRepair_OnClick" Content="Step Two"/>
+			<TextBlock Margin="40 0 0 0" MinWidth="400" Text="{Binding State}"  TextAlignment="Right" VerticalAlignment="Center"  Foreground="Red" FontSize="14"/>
         </StackPanel>
         
 
@@ -46,7 +46,7 @@
                         <Run Text="SCO-Str4=                       "/><LineBreak/>
                         <Run Text="SCO-Str5=   "/><LineBreak/>
                 </TextBlock>
-                <Button Style="{DynamicResource MahApps.Styles.Button.Square}" x:Name="Write" Click="Write_OnClick">Write To Bios</Button>
+				<Button Style="{DynamicResource MahApps.Styles.Button.Square}" IsEnabled="{Binding StepThreeState}" x:Name="Write" Click="Write_OnClick">Write To Bios</Button>
             </StackPanel>
         </StackPanel>
         <StackPanel>

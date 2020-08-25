@@ -26,18 +26,66 @@ namespace BiosFix
             set => this.SetValue(CurrentStatus, value);
         }
 
-    public MainWindow()
+        public static readonly DependencyProperty StepOneEnabled = 
+            DependencyProperty.Register("StepOneState", typeof(bool), typeof(MainWindow));
+
+        public bool StepOneState
+        {
+            get => (bool) this.GetValue(StepOneEnabled);
+            set => this.SetValue(StepOneEnabled, value);
+        }
+
+        public static readonly DependencyProperty StepTwoEnabled =
+            DependencyProperty.Register("StepTwoState", typeof(bool), typeof(MainWindow));
+
+        public bool StepTwoState
+        {
+            get => (bool)this.GetValue(StepTwoEnabled);
+            set => this.SetValue(StepTwoEnabled, value);
+        }
+
+        public static readonly DependencyProperty StepThreeEnabled =
+            DependencyProperty.Register("StepThreeState", typeof(bool), typeof(MainWindow));
+
+        public bool StepThreeState
+        {
+            get => (bool)this.GetValue(StepThreeEnabled);
+            set => this.SetValue(StepThreeEnabled, value);
+        }
+
+        public MainWindow()
         {
             this.DataContext = this;
             if (!File.Exists("DnSmbios64.exe"))
             {
                 State = "Unable to find required DNSMBios executable";
+                StepOneState = false;
+            }
+            else
+            {
+                StepOneState = true;
             }
 
             if (!File.Exists("UsrIdent64.exe"))
             {
                 State = "Unable to find required UsrIdent64.exe executable";
+                StepTwoState = false;
             }
+            else
+            {
+                StepTwoState = true;
+            }
+
+            if (StepOneState == false || StepTwoState == false)
+            {
+                StepThreeState = false;
+            }
+            else
+            {
+                StepThreeState = true;
+
+            }
+
         }
 
         private void Write_OnClick(object sender, RoutedEventArgs e)
