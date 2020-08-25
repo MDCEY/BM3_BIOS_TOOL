@@ -8,13 +8,15 @@
                  xmlns:iconPacks="http://metro.mahapps.com/winfx/xaml/iconpacks"
                  mc:Ignorable="d"
                  GlowBrush="{DynamicResource MahApps.Brushes.Accent}"
-                 Title="Beetle M3 BIOS FIX" Height="550" Width="750">
-    
-    <StackPanel>
+                 Title="Beetle M3 BIOS FIX" Height="550" Width="750"
+                 DataContext="{Binding RelativeSource={RelativeSource Self}}">
+
+	<StackPanel>
 
         <StackPanel Orientation="Horizontal">
             <Button Style="{DynamicResource MahApps.Styles.Button.Square}" Margin="5" DockPanel.Dock="Left" x:Name="StepOne" Click="ExecuteChecksumRepair_OnClick" Content="Step One"/>
             <Button Style="{DynamicResource MahApps.Styles.Button.Square}" Margin="5" DockPanel.Dock="Right" x:Name="StepTwo" Click="ExecuteStructRepair_OnClick" Content="Step Two"/>
+			<TextBlock Margin="40 0 0 0" MinWidth="400" Text="{Binding State}" TextAlignment="Right" VerticalAlignment="Center"  Foreground="Red" FontSize="14"/>
         </StackPanel>
         
 
