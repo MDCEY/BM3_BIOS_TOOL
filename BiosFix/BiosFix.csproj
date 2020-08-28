@@ -4,22 +4,28 @@
         <OutputType>WinExe</OutputType>
         <TargetFramework>netcoreapp3.1</TargetFramework>
         <UseWPF>true</UseWPF>
-        <PublishTrimmed>true</PublishTrimmed>
-        <PublishSingleFile>true</PublishSingleFile>
-        <RuntimeIdentifier>win10-x64</RuntimeIdentifier>
-        <PublishReadyToRun>true</PublishReadyToRun>
-        <PublishReadyToRunShowWarnings>true</PublishReadyToRunShowWarnings>
         <RollForward />
+        <ApplicationManifest>app.manifest</ApplicationManifest>
     </PropertyGroup>
         
     <ItemGroup>
+        <PackageReference Include="BasicSMART" Version="1.0.1" />
         <PackageReference Include="MahApps.Metro" Version="2.2.0" />
         <PackageReference Include="MahApps.Metro.IconPacks" Version="4.4.0" />
+        <PackageReference Include="Microsoft.Windows.Compatibility" Version="3.1.1" />
+        <PackageReference Include="Squirrel.Windows" Version="1.4.4" />
         <PackageReference Include="System.Collections.Immutable" Version="5.0.0-preview.7.20364.11" />
+        <PackageReference Include="WmiLight" Version="2.1.17172.10" />
+        <PackageReference Include="Xcalibur.Controllers" Version="1.0.5" />
+        <PackageReference Include="Xcalibur.Extensions" Version="1.0.4" />
+        <PackageReference Include="Xcalibur.Helpers" Version="1.0.1" />
+        <PackageReference Include="Xcalibur.Models" Version="1.0.5" />
+        <PackageReference Include="Xcalibur.WMI" Version="3.3.0" />
     </ItemGroup>
     
     <Target Name="CopyCustomContentOnPublish" AfterTargets="Publish">
         <Copy SourceFiles="DnSmbios64.exe" DestinationFolder="$(PublishDir)" />
         <Copy SourceFiles="UsrIdent64.exe" DestinationFolder="$(PublishDir)" />
+        <Copy SourceFiles="wnbiostl.exe" DestinationFolder="$(PublishDir)" />
     </Target>
 </Project>

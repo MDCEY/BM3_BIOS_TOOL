@@ -1,0 +1,15 @@
+﻿<mah:MetroWindow x:Class="BiosFix.HardDrive"
+                 xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                 xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                 xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+                 xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+                 xmlns:local="clr-namespace:BiosFix"
+                 xmlns:mah="http://metro.mahapps.com/winfx/xaml/controls"
+                 mc:Ignorable="d"
+                 GlowBrush="{DynamicResource MahApps.Brushes.Accent}"
+                 Title="HardDrive" Height="450" Width="800" Loaded="HardDrive_OnLoaded">
+    <DockPanel>
+        <DataGrid DockPanel.Dock="Top" x:Name="DataStats"/>
+        <DataGrid DockPanel.Dock="Bottom" x:Name="SmartStats"/>
+    </DockPanel>
+</mah:MetroWindow>

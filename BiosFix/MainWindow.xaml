@@ -9,7 +9,8 @@
                  mc:Ignorable="d"
                  GlowBrush="{DynamicResource MahApps.Brushes.Accent}"
                  Title="Beetle M3 BIOS FIX" Height="550" Width="750"
-                 DataContext="{Binding RelativeSource={RelativeSource Self}}">
+                 DataContext="{Binding RelativeSource={RelativeSource Self}}"
+                 Loaded="MainWindow_OnLoaded">
 
 	<StackPanel>
 
@@ -17,6 +18,7 @@
 			<Button Style="{DynamicResource MahApps.Styles.Button.Square}" Margin="5" IsEnabled="{Binding StepOneState}" x:Name="StepOne" Click="ExecuteChecksumRepair_OnClick" Content="Step One"/>
 			<Button Style="{DynamicResource MahApps.Styles.Button.Square}" Margin="5" IsEnabled="{Binding StepTwoState}"  x:Name="StepTwo" Click="ExecuteStructRepair_OnClick" Content="Step Two"/>
 			<TextBlock Margin="40 0 0 0" MinWidth="400" Text="{Binding State}"  TextAlignment="Right" VerticalAlignment="Center"  Foreground="Red" FontSize="14"/>
+			<Button Style="{DynamicResource MahApps.Styles.Button.Square}" Margin="5" IsEnabled="{Binding PassWipeState}" x:Name="BiosWipeButton" Click="ExecutePassWipe_OnClick" Content="Remove Password"/>
         </StackPanel>
         
 
@@ -28,6 +30,12 @@
                 <TextBox Width="170"  Margin="2" mah:TextBoxHelper.Watermark="PSU Serial Number" x:Name="PSUSerInput" />
                 <TextBox Width="170"  Margin="2" mah:TextBoxHelper.Watermark="System Board Part Number" x:Name="BoardProdInput" />
                 <TextBox Width="170"  Margin="2" mah:TextBoxHelper.Watermark="System Board Serial Number" x:Name="BoardSerInput" />
+				<DataGrid MaxWidth="170" x:Name="Storage" IsReadOnly="True"  SelectionMode="Single" AutoGenerateColumns="False" MouseDoubleClick="Row_DoubleClick">
+					<DataGrid.Columns>
+						<DataGridTextColumn  Header="Port#" Binding="{Binding Index}"/>
+                        <DataGridTextColumn  Header="IsOK" Binding="{Binding IsOK}"/>
+					</DataGrid.Columns>
+				</DataGrid>
             </StackPanel>
             
             <StackPanel>
